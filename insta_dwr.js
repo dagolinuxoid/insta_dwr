@@ -1,11 +1,10 @@
-/* Generate urls of pictures for a public Instagram profile */
+/* Get urls of pictures on Instagram */
 const links = new Set();
 
-// initial implementation, it isn't ideal but it works
 window.addEventListener('keyup', event => {
 	if (event.key === 'End') {
 		getUrls().forEach(url => links.add(url));
-		console.log(`${links.size}`);
+		console.log(`You got ::${links.size}:: urls so far`);
 	}
 });
 
@@ -18,7 +17,8 @@ function getUrls() {
 	return urls;
 }
 
-// call it once at the end and copy its output from browser's dev console
+// call it once at the end and "Copy string contents" from devtools output
 [...links].join('\n');
 
-// possible bash usage: for i in $(xclip -se c -o);do curl -# -O $i;done
+// save: for i in $(xclip -se c -o);do curl -# -O $i;done
+// view: xclip -se c -o|xargs mpv
